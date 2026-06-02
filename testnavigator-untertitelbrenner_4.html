@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Untertitelbrenner Pro – Professionelle Untertitel in Sekunden | TestNavigator</title>
+<meta name="description" content="Brenne Untertitel direkt in deine Videos – ohne Abo, ohne Technik-Kenntnisse. Jetzt für 27€ sichern.">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1a1a2e;
+    --accent: #e94560;
+    --accent2: #f5a623;
+    --light: #f8f9fc;
+    --mid: #eef0f6;
+    --text: #2d2d3a;
+    --muted: #7a7a9a;
+    --white: #ffffff;
+    --shadow: 0 8px 40px rgba(26,26,46,0.10);
+    --radius: 14px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: var(--light); color: var(--text); line-height: 1.7; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    background: var(--white); border-bottom: 1px solid var(--mid);
+    padding: 18px 5%; display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 16px rgba(26,26,46,0.06);
+  }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; color: var(--primary); }
+  .logo span { color: var(--accent); }
+  .nav-cta { background: var(--accent); color: var(--white); padding: 10px 22px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: background 0.2s; }
+  .nav-cta:hover { background: #c73050; }
+
+  /* HERO */
+  .hero { background: var(--primary); color: var(--white); padding: 80px 5% 90px; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(233,69,96,0.15) 0%, transparent 70%); pointer-events: none; }
+  .badge { display: inline-block; background: rgba(233,69,96,0.18); border: 1px solid rgba(233,69,96,0.4); color: #ff8099; padding: 5px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; margin-bottom: 20px; }
+  .hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 900; line-height: 1.15; margin-bottom: 20px; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero-sub { font-size: 1.1rem; color: rgba(255,255,255,0.75); margin-bottom: 32px; font-weight: 300; }
+  .hero-bullets { list-style: none; margin-bottom: 36px; }
+  .hero-bullets li { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-size: 1rem; color: rgba(255,255,255,0.88); }
+  .hero-bullets li::before { content: '✓'; background: var(--accent); color: white; width: 20px; height: 20px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; flex-shrink: 0; }
+  .btn-primary { display: inline-block; background: var(--accent); color: white; padding: 16px 36px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 1.05rem; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 24px rgba(233,69,96,0.35); }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(233,69,96,0.45); }
+  .price-note { margin-top: 12px; font-size: 0.85rem; color: rgba(255,255,255,0.5); }
+  .price-note strong { color: var(--accent2); }
+
+  /* HERO VISUAL */
+  .hero-visual { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 36px; backdrop-filter: blur(10px); }
+  .mockup-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.4); margin-bottom: 16px; }
+  .mockup-steps { list-style: none; }
+  .mockup-steps li { display: flex; align-items: flex-start; gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .mockup-steps li:last-child { border-bottom: none; }
+  .step-num { background: var(--accent); color: white; width: 28px; height: 28px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 700; flex-shrink: 0; }
+  .step-text strong { display: block; font-size: 0.95rem; margin-bottom: 2px; }
+  .step-text span { font-size: 0.82rem; color: rgba(255,255,255,0.5); }
+  .tag-strip { display: flex; gap: 8px; margin-top: 20px; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; color: rgba(255,255,255,0.6); }
+
+  /* FREEBIE SECTION */
+  .freebie { background: var(--white); padding: 70px 5%; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .section-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); font-weight: 600; margin-bottom: 12px; }
+  .freebie h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.6rem, 3vw, 2.4rem); font-weight: 900; color: var(--primary); line-height: 1.2; margin-bottom: 16px; }
+  .freebie p { color: var(--muted); margin-bottom: 28px; font-size: 1rem; }
+
+  /* FREEBIE CHOICE CARDS */
+  .freebie-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .freebie-card { background: var(--light); border: 2px solid var(--mid); border-radius: var(--radius); padding: 24px 20px; text-align: center; transition: border-color 0.2s, transform 0.2s; }
+  .freebie-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .freebie-card .card-icon { font-size: 2.2rem; margin-bottom: 10px; }
+  .freebie-card .card-title { font-weight: 700; font-size: 1rem; color: var(--primary); margin-bottom: 6px; }
+  .freebie-card .card-desc { font-size: 0.82rem; color: var(--muted); margin-bottom: 0; }
+
+  /* OPT-IN SECTION */
+  .optin-section { background: linear-gradient(135deg, #f0f4ff 0%, #fdf0f3 100%); padding: 70px 5%; text-align: center; }
+  .optin-box { max-width: 600px; margin: 0 auto; background: var(--white); border-radius: 20px; padding: 48px 40px; box-shadow: var(--shadow); }
+  .optin-box h2 { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 900; color: var(--primary); margin-bottom: 10px; }
+  .optin-box .optin-sub { color: var(--muted); margin-bottom: 28px; font-size: 0.95rem; }
+
+  /* FORM */
+  .form-group { margin-bottom: 14px; text-align: left; }
+  .form-group label { display: block; font-size: 0.82rem; font-weight: 600; color: var(--text); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .form-group input { width: 100%; padding: 14px 16px; border: 1.5px solid var(--mid); border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: var(--text); background: var(--light); transition: border-color 0.2s; outline: none; }
+  .form-group input:focus { border-color: var(--accent); background: white; }
+
+  /* SUBMIT + CHOICE BUTTONS */
+  .btn-submit { width: 100%; background: var(--accent); color: white; border: none; padding: 16px; border-radius: 10px; font-family: 'DM Sans', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background 0.2s, transform 0.2s; margin-top: 6px; }
+  .btn-submit:hover { background: #c73050; transform: translateY(-1px); }
+
+  /* DOWNLOAD CHOICE - shown after form submit */
+  .download-choice { display: none; text-align: center; }
+  .download-choice.visible { display: block; }
+  .choice-title { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--primary); margin-bottom: 8px; }
+  .choice-sub { color: var(--muted); font-size: 0.95rem; margin-bottom: 28px; }
+  .choice-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .btn-choice { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 22px 16px; border-radius: 14px; text-decoration: none; font-weight: 700; font-size: 0.95rem; transition: transform 0.2s, box-shadow 0.2s; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; }
+  .btn-pdf { background: var(--primary); color: white; box-shadow: 0 4px 20px rgba(26,26,46,0.2); }
+  .btn-pdf:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(26,26,46,0.3); }
+  .btn-audio { background: var(--accent); color: white; box-shadow: 0 4px 20px rgba(233,69,96,0.3); }
+  .btn-audio:hover { transform: translateY(-3px); box-shadow: 0 8px 28px rgba(233,69,96,0.4); }
+  .btn-choice .choice-icon { font-size: 2rem; }
+  .btn-choice .choice-label { font-size: 1rem; font-weight: 700; }
+  .btn-choice .choice-desc { font-size: 0.78rem; opacity: 0.8; font-weight: 400; }
+  .both-link { margin-top: 16px; font-size: 0.82rem; color: var(--muted); }
+  .both-link a { color: var(--accent); font-weight: 600; text-decoration: none; }
+  .both-link a:hover { text-decoration: underline; }
+
+  .form-note { margin-top: 14px; font-size: 0.78rem; color: var(--muted); }
+  .form-note a { color: var(--muted); }
+
+  /* BUY SECTION */
+  .buy-section { padding: 70px 5%; background: var(--white); }
+  .buy-inner { max-width: 860px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+  .buy-section h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.5rem, 2.5vw, 2.2rem); font-weight: 900; color: var(--primary); margin-bottom: 16px; }
+  .buy-section p { color: var(--muted); margin-bottom: 20px; }
+  .feature-list { list-style: none; margin-bottom: 24px; }
+  .feature-list li { display: flex; align-items: center; gap: 8px; padding: 6px 0; font-size: 0.92rem; color: var(--text); }
+  .feature-list li::before { content: '→'; color: var(--accent); font-weight: 700; }
+  .price-card { background: var(--primary); border-radius: 20px; padding: 36px; color: white; text-align: center; position: relative; overflow: hidden; }
+  .price-card::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; background: radial-gradient(circle, rgba(233,69,96,0.2) 0%, transparent 70%); }
+  .price-once { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,0.5); margin-bottom: 8px; }
+  .price-amount { font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 900; line-height: 1; margin-bottom: 4px; }
+  .price-amount sup { font-size: 1.8rem; vertical-align: top; margin-top: 10px; display: inline-block; }
+  .price-desc { font-size: 0.82rem; color: rgba(255,255,255,0.5); margin-bottom: 28px; }
+  .price-perks { list-style: none; margin-bottom: 28px; text-align: left; }
+  .price-perks li { display: flex; align-items: center; gap: 8px; padding: 7px 0; font-size: 0.88rem; border-bottom: 1px solid rgba(255,255,255,0.07); color: rgba(255,255,255,0.85); }
+  .price-perks li:last-child { border-bottom: none; }
+  .perk-check { color: var(--accent2); font-weight: 700; }
+  .btn-buy { display: block; background: var(--accent); color: white; padding: 16px; border-radius: 10px; text-decoration: none; font-weight: 700; font-size: 1rem; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(233,69,96,0.4); }
+  .btn-buy:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(233,69,96,0.5); }
+  .secure-note { margin-top: 12px; font-size: 0.75rem; color: rgba(255,255,255,0.35); }
+
+  /* FOOTER */
+  footer { background: var(--primary); color: rgba(255,255,255,0.45); padding: 30px 5%; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; font-size: 0.82rem; }
+  footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
+  footer a:hover { color: rgba(255,255,255,0.7); }
+  .footer-links { display: flex; gap: 20px; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .hero-content { animation: fadeUp 0.7s ease both; }
+  .hero-visual { animation: fadeUp 0.7s 0.15s ease both; }
+
+  @media (max-width: 768px) {
+    .hero { grid-template-columns: 1fr; gap: 40px; padding: 50px 5% 60px; }
+    .freebie { grid-template-columns: 1fr; gap: 36px; }
+    .freebie-cards { grid-template-columns: 1fr 1fr; }
+    .buy-inner { grid-template-columns: 1fr; }
+    .optin-box { padding: 32px 24px; }
+    .choice-buttons { grid-template-columns: 1fr 1fr; }
+    footer { flex-direction: column; text-align: center; }
+  }
+  @media (max-width: 480px) {
+    .freebie-cards { grid-template-columns: 1fr; }
+    .choice-buttons { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Test<span>Navigator</span></div>
+  <a href="https://www.digistore24.com/product/691799" class="nav-cta" target="_blank">Jetzt sichern – 27 €</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="badge">🔥 Einmalzahlung – kein Abo</div>
+    <h1>Untertitel in deine Videos brennen –<br><em>einfach, schnell, fertig.</em></h1>
+    <p class="hero-sub">Kein kompliziertes Schnittprogramm. Kein technisches Vorwissen. Einfach Video rein, Untertitel drauf – fertig.</p>
+    <ul class="hero-bullets">
+      <li>Funktioniert direkt im Browser</li>
+      <li>Für Instagram, TikTok, YouTube & Pinterest</li>
+      <li>Einmalig bezahlen – für immer nutzen</li>
+      <li>Kostenlose Checkliste als PDF oder Audio</li>
+    </ul>
+    <a href="https://www.digistore24.com/product/691799" class="btn-primary" target="_blank">Jetzt für 27 € holen →</a>
+    <p class="price-note">Einmalzahlung · <strong>Keine monatlichen Kosten</strong> · Sofortiger Zugang</p>
+  </div>
+  <div class="hero-visual">
+    <div class="mockup-label">So funktioniert's</div>
+    <ul class="mockup-steps">
+      <li>
+        <div class="step-num">1</div>
+        <div class="step-text"><strong>Video hochladen</strong><span>MP4, MOV oder AVI – einfach reinziehen</span></div>
+      </li>
+      <li>
+        <div class="step-num">2</div>
+        <div class="step-text"><strong>Untertitel eingeben</strong><span>Text eintippen, Schriftart & Farbe wählen</span></div>
+      </li>
+      <li>
+        <div class="step-num">3</div>
+        <div class="step-text"><strong>Brennen & herunterladen</strong><span>Ein Klick – fertig für Social Media</span></div>
+      </li>
+    </ul>
+    <div class="tag-strip">
+      <span class="tag">Instagram</span>
+      <span class="tag">TikTok</span>
+      <span class="tag">YouTube</span>
+      <span class="tag">Pinterest</span>
+    </div>
+  </div>
+</section>
+
+<!-- FREEBIE TEASER -->
+<section class="freebie">
+  <div>
+    <div class="section-label">Gratis für dich</div>
+    <h2>Deine kostenlose Video-Checkliste</h2>
+    <p>Trag dich ein und hol dir sofort die Checkliste – damit deine Videos auf jeder Plattform professionell wirken. Du wählst selbst ob du lieber liest oder hörst!</p>
+    <ul class="hero-bullets" style="margin-bottom:0">
+      <li>Optimale Video-Einstellungen je Plattform</li>
+      <li>Schriftgrößen die wirklich lesbar sind</li>
+      <li>Die 7 häufigsten Untertitel-Fehler</li>
+      <li>Checkliste vor dem Upload</li>
+    </ul>
+  </div>
+  <div class="freebie-cards">
+    <div class="freebie-card">
+      <div class="card-icon">📋</div>
+      <div class="card-title">PDF Checkliste</div>
+      <div class="card-desc">Ausdrucken & abhaken – ideal zum Mitnehmen</div>
+    </div>
+    <div class="freebie-card">
+      <div class="card-icon">🎧</div>
+      <div class="card-title">Audio Version</div>
+      <div class="card-desc">Einfach anhören – unterwegs oder beim Arbeiten</div>
+    </div>
+  </div>
+</section>
+
+<!-- OPT-IN -->
+<section class="optin-section" id="freebie">
+  <div class="optin-box">
+
+    <!-- FORM (wird nach Submit ausgeblendet) -->
+    <div id="optin-form">
+      <h2>Checkliste kostenlos sichern</h2>
+      <p class="optin-sub">Trag dich jetzt ein – danach wählst du ob du PDF oder Audio möchtest.</p>
+      <div class="form-group">
+        <label>Vorname</label>
+        <input type="text" id="field-name" placeholder="Dein Vorname" />
+      </div>
+      <div class="form-group">
+        <label>E-Mail-Adresse</label>
+        <input type="email" id="field-email" placeholder="deine@email.de" />
+      </div>
+      <!-- MailerLite: Ersetze den Button unten durch deinen MailerLite Embed-Code -->
+      <button class="btn-submit" onclick="showDownloadChoice()">✉ Kostenlos eintragen & Checkliste wählen</button>
+      <p class="form-note">Kein Spam. Abmeldung jederzeit möglich. <a href="#">Datenschutz</a></p>
+    </div>
+
+    <!-- DOWNLOAD CHOICE (erscheint nach Eintragung) -->
+    <div class="download-choice" id="download-choice">
+      <div style="font-size:2.5rem; margin-bottom:12px;">🎉</div>
+      <div class="choice-title">Danke! Jetzt wählen:</div>
+      <div class="choice-sub">Wie möchtest du deine kostenlose Video-Checkliste?</div>
+      <div class="choice-buttons">
+        <!-- PDF LINK: Hier den direkten Link zu deiner PDF-Datei eintragen -->
+        <a href="https://drive.google.com/uc?export=download&id=1csU5vNkm_QfJA35oZKASY4iyqdzYjHM3" class="btn-choice btn-pdf" target="_blank">
+          <span class="choice-icon">📋</span>
+          <span class="choice-label">PDF herunterladen</span>
+          <span class="choice-desc">Zum Ausdrucken & Abhaken</span>
+        </a>
+        <!-- AUDIO LINK: Hier den direkten Link zu deiner MP3-Datei eintragen -->
+        <a href="https://drive.google.com/uc?export=download&id=1DWBkV5QWoyAm0uaARAB20-fOV7pHUlHR" class="btn-choice btn-audio" target="_blank">
+          <span class="choice-icon">🎧</span>
+          <span class="choice-label">Audio anhören</span>
+          <span class="choice-desc">Unterwegs oder beim Arbeiten</span>
+        </a>
+      </div>
+      <p class="both-link">Du möchtest beides? <a href="#">Hier klicken für PDF + Audio</a></p>
+    </div>
+
+  </div>
+</section>
+
+<!-- BUY -->
+<section class="buy-section">
+  <div class="buy-inner">
+    <div>
+      <div class="section-label">Das Tool</div>
+      <h2>Untertitelbrenner Pro von TestNavigator</h2>
+      <p>Einmal kaufen, für immer nutzen. Kein Abo, kein Schnickschnack – einfach ein Tool das funktioniert.</p>
+      <ul class="feature-list">
+        <li>Läuft direkt im Browser</li>
+        <li>Kein Download, keine Installation</li>
+        <li>Alle Plattformformate unterstützt</li>
+        <li>Unbegrenzte Nutzung nach Kauf</li>
+        <li>Sofortiger Zugang nach Zahlung</li>
+        <li>Kostenlose Updates inklusive</li>
+      </ul>
+    </div>
+    <div class="price-card">
+      <div class="price-once">Einmaliger Preis</div>
+      <div class="price-amount"><sup>€</sup>27</div>
+      <div class="price-desc">Kein Abo · Keine versteckten Kosten</div>
+      <ul class="price-perks">
+        <li><span class="perk-check">★</span> Sofortiger Zugang</li>
+        <li><span class="perk-check">★</span> Kostenlose Checkliste (PDF + Audio)</li>
+        <li><span class="perk-check">★</span> Unbegrenzte Nutzung</li>
+        <li><span class="perk-check">★</span> Kostenlose Updates</li>
+      </ul>
+      <a href="https://www.digistore24.com/product/691799" class="btn-buy" target="_blank">Jetzt sichern für 27 € →</a>
+      <p class="secure-note">🔒 Sichere Zahlung über Digistore24</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>© 2025 TestNavigator · Alle Rechte vorbehalten</div>
+  <div class="footer-links">
+    <a href="#">Impressum</a>
+    <a href="#">Datenschutz</a>
+    <a href="#">Kontakt</a>
+  </div>
+</footer>
+
+<script>
+function showDownloadChoice() {
+  const name = document.getElementById('field-name').value.trim();
+  const email = document.getElementById('field-email').value.trim();
+  if (!email || !email.includes('@')) {
+    alert('Bitte trage eine gültige E-Mail-Adresse ein.');
+    return;
+  }
+  // Formular ausblenden, Auswahl einblenden
+  document.getElementById('optin-form').style.display = 'none';
+  document.getElementById('download-choice').classList.add('visible');
+  // Hier MailerLite API oder Redirect einbauen
+}
+</script>
+</body>
+</html>
